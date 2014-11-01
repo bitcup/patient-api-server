@@ -1,14 +1,12 @@
 package com.sawa.service;
 
+import com.google.common.collect.Lists;
 import com.sawa.entity.Care;
 import com.sawa.entity.Patient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: omar
@@ -18,6 +16,23 @@ public class CareServiceImpl implements CareService {
     private static final Logger logger = LoggerFactory.getLogger(CareServiceImpl.class);
 
     private Map<String, List<Care>> caresByPatientId = new HashMap<String, List<Care>>();
+
+    public CareServiceImpl() {
+        Care care = new Care();
+        care.setId("111");
+        care.setFacilityName("MGH");
+        care.setLocation("Boston");
+        care.setReason("Heart attack");
+        care.setStart(new Date());
+        care.setEnd(new Date());
+        care.setOvernight(true);
+        Patient patient = new Patient();
+        patient.setId("abc-123");
+        patient.setName("Joe");
+        care.setPatient(patient);
+        List<Care> init = Lists.newArrayList(care);
+        caresByPatientId.put("abc-123", init);
+    }
 
     @Override
     public void saveCare(Care care) throws Exception {

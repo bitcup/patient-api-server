@@ -24,7 +24,8 @@ public class PatientServiceImpl implements PatientService {
 
     public PatientServiceImpl() {
         Patient testPatient = new Patient();
-        testPatient.setId(UUID.randomUUID().toString());
+        //testPatient.setId(UUID.randomUUID().toString());
+        testPatient.setId("abc-123");
         testPatient.setName("Joe Patient");
         testPatient.setEmail("joe@test.com");
         testPatient.setPrivateAuthKey("1234567890");
